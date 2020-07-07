@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
 
-    public static GameHandler instance;
-    public static SceneLoader sceneLoader;
-    public static HealthScript healthScript;
-    public static PickupHandler pickupHandler;
-    [SerializeField] public Player player;
-
-    public bool gameStart = false;
+    GameHandler instance;
+    public SceneLoader sceneLoader;
+    public HealthScript healthScript;
+    public PickupHandler pickupHandler;
+    public UIManager uiManager;
+    public AudioSource audioSource;
+    public Player player;
 
     private void Awake() {
 
@@ -36,19 +36,23 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("1"))
-        {
-            SceneLoader.Load(SceneLoader.Scene.Level01);
-        }
 
-        if (Input.GetKeyDown("2"))
-        {
-            SceneLoader.Load(SceneLoader.Scene.Level02);
-        }
+    }
 
-        if (Input.GetKeyDown("3"))
-        {
-            SceneLoader.Load(SceneLoader.Scene.Level03);
-        }
+    public void LoadNextLevel()
+    {
+        sceneLoader.LoadNextLevel();
+    }
+
+    public void addGem()
+    {
+        pickupHandler.increaseAmountOfGems();
+        uiManager.updateGemText(pickupHandler.getCurrentAmountOfGems().ToString());
+    }
+
+    public void addCherry()
+    {
+        pickupHandler.increaseAmountOfCherries();
+        uiManager.updateCherryText(pickupHandler.getCurrentAmountOfCherries().ToString());
     }
 }

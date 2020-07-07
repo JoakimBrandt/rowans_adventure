@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Gem
+  - Amount Of Gems
+  - Amount Of Cherries
+  - Game Handler
+  - Ladder
+  - Cherry
+  - NextLevelCollider
+  - Camera Collider
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,6 +23,10 @@ TagManager:
   - UI
   - 
   - 
+  - Ground
+  - Player
+  - Collectables
+  - Enemies
   - 
   - 
   - 
@@ -31,13 +45,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Next Level Colliders
+  - Camera colliders
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Collectables
+    uniqueID: 1482106651
     locked: 0

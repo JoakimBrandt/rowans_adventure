@@ -15,22 +15,22 @@ public class PickupHandler : MonoBehaviour
         currentAmountOfGems = 0;
     }
 
-    int getCurrentAmountOfGems()
+    public int getCurrentAmountOfGems()
     {
         return currentAmountOfGems;
     }
 
-    int getCurrentAmountOfCherries()
+    public int getCurrentAmountOfCherries()
     {
         return currentAmountOfCherries;
     }
 
-    void increaseAmountOfCherries()
+    public void increaseAmountOfCherries()
     {
         currentAmountOfCherries++;
     }
 
-    void increaseAmountOfGems()
+    public void increaseAmountOfGems()
     {
         currentAmountOfGems++;
     }

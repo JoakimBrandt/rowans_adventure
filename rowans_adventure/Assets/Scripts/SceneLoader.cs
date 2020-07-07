@@ -5,13 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader: MonoBehaviour
 {
-    public enum Scene {
-        Level01, 
-        Level02,
-        Level03
+    public Animator transition;
+    public float transitionTime = 1f;
+
+    public void LoadNextLevel()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
-    public static void Load(Scene scene) {
-        SceneManager.LoadScene(scene.ToString());
+    public void triggerAnimation()
+    {
+        transition.SetTrigger("Start");
     }
+
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        // Play animation
+
+        transition.SetTrigger("Start");
+
+        // Wait for animation to finish
+
+        yield return new WaitForSeconds(transitionTime);
+
+        // Finally load scene
+
+        SceneManager.LoadScene(levelIndex);
+    }
+
 }

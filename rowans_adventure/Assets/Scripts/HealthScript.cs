@@ -9,44 +9,41 @@ public class HealthScript : MonoBehaviour
     [SerializeField] public int currentHealth;
     [SerializeField] public int invulnerabilityTime;
 
+    public HealthBar healthBar;
+
+
     void Start()
     {
         maxHealth = 5;
         currentHealth = maxHealth;
         invulnerabilityTime = 3000;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
-    void increaseHealth()
+    public void increaseHealth()
     {
         currentHealth++;
+        healthBar.IncreaseHealth();
     }
 
-    void decreaseHealth()
+    public void decreaseHealth()
     {
         currentHealth--;
+        healthBar.DecreaseHealth();
     }
 
-    void increaseMaxHealth()
-    {
-        maxHealth++;
-    }
-
-    void decreaseMaxHealth()
-    {
-        maxHealth--;
-    }
-
-    void restoreAllHealth()
+    public void restoreAllHealth()
     {
         currentHealth = maxHealth;
+        healthBar.SetHealth(5);
     }
 
-    int getCurrenHealth()
+    public int getCurrenHealth()
     {
         return currentHealth;
     }
 
-    int getCurrentMaxHealth()
+    public int getCurrentMaxHealth()
     {
         return maxHealth;
     }
