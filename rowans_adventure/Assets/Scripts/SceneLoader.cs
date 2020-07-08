@@ -13,11 +13,25 @@ public class SceneLoader: MonoBehaviour
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
+    public void LoadMainMenu()
+    {
+        StartCoroutine(LoadLevel(1));
+    }
+
+    public void LoadGameOver()
+    {
+        StartCoroutine(LoadLevel(0));
+    }
+
     public void triggerAnimation()
     {
         transition.SetTrigger("Start");
     }
 
+    public void fadeOut()
+    {
+        transition.SetTrigger("FadeOUT");
+    }
 
     IEnumerator LoadLevel(int levelIndex)
     {

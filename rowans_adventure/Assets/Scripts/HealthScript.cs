@@ -7,7 +7,6 @@ public class HealthScript : MonoBehaviour
 
     [SerializeField] public int maxHealth;
     [SerializeField] public int currentHealth;
-    [SerializeField] public int invulnerabilityTime;
 
     public HealthBar healthBar;
 
@@ -16,7 +15,6 @@ public class HealthScript : MonoBehaviour
     {
         maxHealth = 5;
         currentHealth = maxHealth;
-        invulnerabilityTime = 3000;
         healthBar.SetMaxHealth(maxHealth);
     }
 
@@ -30,6 +28,17 @@ public class HealthScript : MonoBehaviour
     {
         currentHealth--;
         healthBar.DecreaseHealth();
+    }
+
+    public bool isPlayerDead()
+    {
+        if(currentHealth == 0)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
     public void restoreAllHealth()

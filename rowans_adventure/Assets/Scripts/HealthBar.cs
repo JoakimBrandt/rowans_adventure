@@ -21,11 +21,11 @@ public class HealthBar : MonoBehaviour
 
     public void IncreaseHealth()
     {
-        slider.value += slider.value;
+        slider.value++;
     }
 
     public void DecreaseHealth()
     {
-        slider.value -= slider.value;
+        slider.value--;
     }
 }

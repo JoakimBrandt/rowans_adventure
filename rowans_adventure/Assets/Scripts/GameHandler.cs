@@ -13,6 +13,7 @@ public class GameHandler : MonoBehaviour
     public UIManager uiManager;
     public AudioSource audioSource;
     public Player player;
+    public bool gameHasEnded = false;
 
     private void Awake() {
 
@@ -24,18 +25,6 @@ public class GameHandler : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
@@ -54,5 +43,36 @@ public class GameHandler : MonoBehaviour
     {
         pickupHandler.increaseAmountOfCherries();
         uiManager.updateCherryText(pickupHandler.getCurrentAmountOfCherries().ToString());
+    }
+
+    public void takeDamage()
+    {
+        healthScript.decreaseHealth();
+
+        if(healthScript.isPlayerDead())
+        {
+            GameOver();
+        } else
+        {
+            return;
+        }
+    }
+    public void GameOver()
+    {
+        if(!gameHasEnded)
+        {
+            gameHasEnded = true;
+            sceneLoader.LoadGameOver();
+        }
+    }
+
+    public void DestroyGameHandler()
+    {
+        Destroy(gameObject);
+    }
+
+    void Restart()
+    {
+
     }
 }
