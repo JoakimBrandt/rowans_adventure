@@ -18,10 +18,17 @@ public class Player : MonoBehaviour
     [SerializeField] float tookDamageThrust = 65.0f;
     [SerializeField] Renderer renderer;
 
+    private Inventory inventory;
+
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
     bool isInvincible = false;
+
+    private void Awake()
+    {
+        inventory = new Inventory();
+    }
 
     private void Start()
     {
@@ -54,6 +61,11 @@ public class Player : MonoBehaviour
             crouch = false;
             animator.SetBool("IsCrouching", false);
         }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+
+        }
     }
 
     public void OnLanding()
@@ -80,7 +92,13 @@ public class Player : MonoBehaviour
             gameHandler.addCherry();
         }
 
-        if(collision.CompareTag("NextLevelCollider"))
+        if (collision.CompareTag("Parchment"))
+        {
+            collision.gameObject.SetActive(false);
+            gameHandler.addParchment();
+        }
+
+        if (collision.CompareTag("NextLevelCollider"))
         {
             gameHandler.LoadNextLevel();
         }

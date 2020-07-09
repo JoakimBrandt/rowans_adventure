@@ -7,12 +7,14 @@ public class PickupHandler : MonoBehaviour
 
     [SerializeField] int currentAmountOfGems;
     [SerializeField] int currentAmountOfCherries;
+    [SerializeField] int currentAmountOfParchments;
 
     // Start is called before the first frame update
     void Start()
     {
         currentAmountOfCherries = 0;
         currentAmountOfGems = 0;
+        currentAmountOfParchments = 0;
     }
 
     public int getCurrentAmountOfGems()
@@ -25,6 +27,11 @@ public class PickupHandler : MonoBehaviour
         return currentAmountOfCherries;
     }
 
+    public int getCurrentAmountOfParchments()
+    {
+        return currentAmountOfParchments;
+    }
+
     public void increaseAmountOfCherries()
     {
         currentAmountOfCherries++;
@@ -33,5 +40,10 @@ public class PickupHandler : MonoBehaviour
     public void increaseAmountOfGems()
     {
         currentAmountOfGems++;
+    }
+
+    public void increaseAmountOfParchments()
+    {
+        currentAmountOfParchments++;
     }
 }

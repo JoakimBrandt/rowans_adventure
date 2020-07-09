@@ -13,6 +13,7 @@ public class GameHandler : MonoBehaviour
     public UIManager uiManager;
     public AudioSource audioSource;
     public Player player;
+    public Inventory inventory;
     public bool gameHasEnded = false;
 
     private void Awake() {
@@ -43,6 +44,29 @@ public class GameHandler : MonoBehaviour
     {
         pickupHandler.increaseAmountOfCherries();
         uiManager.updateCherryText(pickupHandler.getCurrentAmountOfCherries().ToString());
+    }
+
+    public void addParchment()
+    {
+        pickupHandler.increaseAmountOfParchments();
+        uiManager.updateParchmentText(pickupHandler.getCurrentAmountOfParchments().ToString());
+        inventory.AddItem(new Item { itemType = Item.ItemType.Parchment, amount = 1 });
+    }
+
+    public bool doesPlayerHaveParchment()
+    {
+        foreach (Item item in inventory.GetItemList())
+        {
+            if(item.itemType == Item.ItemType.Parchment)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        return false;
     }
 
     public void takeDamage()

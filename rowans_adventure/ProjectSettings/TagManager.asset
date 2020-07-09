@@ -15,6 +15,11 @@ TagManager:
   - Camera Collider
   - Enemy
   - BottomLimitDeath
+  - TheAllMighty
+  - Interactable
+  - Amount Of Parchments
+  - Parchment
+  - EndGame
   layers:
   - Default
   - TransparentFX
